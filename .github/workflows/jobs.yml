@@ -190,6 +190,16 @@ jobs:
         with:
           name: ${{ format('{0}_{1}_{2}_{3}', env.FILE_PREFIX, 'print-pdf-no-bleed', env.MUKI, steps.date.outputs.date) }}
           path: book.pdf
+      - name: Discordへのメッセージ送信
+        uses: tsickert/discord-webhook@v7.0.0
+        with:
+          webhook-url: ${{ secrets.WEBHOOK_URL }}
+          content: ${{ format('ゲラ上がったよ！（{0}）', steps.date.outputs.date) }}
+      - name: Discordへのファイルアップロード
+        uses: tsickert/discord-webhook@v7.0.0
+        with:
+          webhook-url: ${{ secrets.WEBHOOK_URL }}
+          filename: book.pdf
 
   ebook-pdf:
     # needs: reviewdog-github-check
