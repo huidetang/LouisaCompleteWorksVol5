@@ -4,11 +4,14 @@ inherit: ["config.yml"]
 
 # 印刷所の名前は設定しない
 
-# 表紙と裏表紙は作らない
-cover: false
+# 表紙と裏表紙は作らないcover: cover.xhtml
+cover: cover.xhtml
+coverimage: frontcover.png
+epubmaker:
+  cover_linear: yes
 
 # 大扉は画像で作る
-titlefile: title.xhtml
+titlepage: false
 
 # 奥付は自作したXMTMLファイルを使う
 colophon: colophon.xhtml
